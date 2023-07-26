@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            min-height:100vh
+        }
+
+        table,tbody,thead{
+            /* border: 3px solid aqua; */
+            width:320px;
+            /* height:100px; */
+            background-color: black;
+            font-size: 25px;
+        }
+
+        thead{
+            width: 100%;
+            height:100px
+        }
+
+        tbody{
+            width: 100%;
+            height:300px;
+        }
+
+        th,td{
+            /* border:1px red solid; */
+            padding:5px;
+            text-align: center;
+        }
+
+        td{
+            color:white;
+            height:50px;
+        }
+
+        .th1{
+            background-color:silver;
+            width:98%;
+            height:80px;
+            text-align: right;
+            font-size:50px;
+        }
+
+        input{
+            width:100%;
+            height:100%;
+            font-size:30px;
+            background-color: black;
+            color:white;
+            border:0px;
+        }
+
+        .c1{
+            color:orange
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4"><input id="Equation"  class="th1" type="text" placeholder="0" ></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><input class="c1" onclick="clearall()" type="button" value="AC"></td>
+                <!-- <td><input class="c1 in" type="button" value="x"></td> -->
+                <td><input class="c1 in" type="button" value="%"></td>
+                <td><input class="c1 in" type="button" value="/"></td>
+            </tr>
+
+            <tr>
+                <td><input  type="button" class="in" value="7"></td>
+                <td><input type="button" class="in" value="8"></td>
+                <td><input type="button" class="in" value="9"></td>
+                <td><input class="c1 in"  type="button" value="*"></i></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" class="in" value="4"></td>
+                <td><input type="button" class="in" value="5"></td>
+                <td><input type="button" class="in" value="6"></td>
+                <td><input class="c1 in" type="button" value="-"></i></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" class="in" value="1"></td>
+                <td><input type="button" class="in" value="2"></td>
+                <td><input type="button" class="in" value="3"></td>
+                <td><input class="c1 in"  type="button" value="+"></td>
+            </tr>
+
+            <tr>    
+                <td><input class="c1" onclick="clearone()" type="button" value="C"></td>
+                <td><input type="button" class="in" value="0"></td>
+                <td><input class="c1"  type="button" value="."></td>
+                <td><input class="c1" type="button" onclick="solve()"  value="="></td>
+            </tr>
+        </tbody>
+        
+    </table>
+
+    <script>
+
+        let eq = document.getElementById("Equation")
+        let inputs = document.querySelectorAll("input.in")
+        console.log(inputs.length)
+
+
+        inputs.forEach(x =>{
+            x.addEventListener("click",()=>{
+                eq.value += x.value;
+            })
+        })
+
+        function clearall(){
+            eq.value = "";
+        }
+
+        function solve(){
+             eq.value = eval(eq.value);
+        }
+
+        function clearone(){
+            eq.value = eq.value.slice(0,eq.value.length-1)
+        }
+
+    </script>
+</body>
+</html>
